@@ -1,0 +1,1 @@
+The project will work perfectly on the local machine  and not on any other machine due to the lack of DB & missing .env file that stores the credentials for mapbox and cloudinary & Mongo Atlas as well.
