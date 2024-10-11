@@ -1,0 +1,145 @@
+<% layout("/layout/boilerplate") -%>
+<body>
+<!--Bootstrap used to make card layout and customized accordingly, experiment carefully and get styling-->
+<!-- writing css in style tag for ease of understanding-->
+<style>
+    #filters{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .filter{
+        text-align: center;
+        margin-right: 3rem;
+        margin-top: 1rem;
+        opacity: 0.7;
+        cursor: pointer;
+    }
+    .filter:hover{
+        opacity: 1;
+    }
+    .filter p{
+        font-size: 0.9rem;
+    }
+    .taxInfo{
+        display: none;
+        
+    }
+    .tax-toggle{
+        border: 1px solid green;
+        border-radius: 0.5rem;
+        height: 3.5rem;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        margin-left: 5rem;
+    }
+</style>
+<!-- Added front end for small filters that be applied to the listed properties. Develop backend redirecting to new pages with requested porperties in free time-->
+    <div id="filters">
+        <div class="filter">
+            <div><i class="fa-solid fa-fire-flame-curved"></i></div>
+            <p> Trending </p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-solid fa-umbrella-beach"></i></div>
+            <p> Beaches </p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-solid fa-mountain-sun"></i></div>
+            <p> Mountains </p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-solid fa-cow"></i></div>
+            <p> Farms </p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-solid fa-city"></i></div>
+            <p> City </p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-solid fa-campground"></i></div>
+            <p> Camping </p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-regular fa-snowflake"></i></div>
+            <p> Arctic </p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-brands fa-fort-awesome"></i></div>
+            <p> Forts </p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-solid fa-hotel"></i></div>
+            <p> Luxury Stays </p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-solid fa-shoe-prints"></i></div>
+            <p> Others </p>
+        </div>
+
+        <div class="tax-toggle">
+            <div class="form-check form-switch form-check-reverse">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
+                <label class="form-check-label" for="flexSwitchCheckReverse"> Display Tax </label>
+              </div>
+        </div>
+
+    </div>
+
+<div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1"> <!--to set the cards in a row and column-->
+    <%for(listing of allListings){%>
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+            <div class="card col listing-card">
+                <img 
+                src="<%= listing.image.url %>" 
+                class="card-img-top" 
+                alt="cardImage" 
+                style="height: 20rem;">
+                <div class="card-img-overlay">globetrotter</div>
+                <div class="card-body">
+                <p class="card-text">
+                    <b><%= listing.title %> <br></b>
+                    &#8377;<%= listing.price.toLocaleString("en-IN") %> /night
+                    &nbsp; &nbsp; <i class="taxInfo"> +18% GST</i>
+                </p>
+                  
+                </div>
+              </div>
+        </a>
+    <% } %>
+</div>
+
+<script>
+    let taxSwitch = document.getElementById("flexSwitchCheckReverse");
+    taxSwitch.addEventListener("click",()=>{
+        let taxShow = document.getElementsByClassName("taxInfo");
+        for(info of taxShow){
+            if(info.style.display != "inline"){
+                info.style.display = "inline";
+            }
+            else{
+                info.style.display = "none";
+            }
+        }
+    })
+</script>
+
+
+
+
+
+
+
+
+
+</body>

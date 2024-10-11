@@ -1,0 +1,68 @@
+<!--Bootstrap code for navbar tranferred using include()-->
+
+<style>
+.search-btn{
+  border-radius: 25px;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 1rem;
+  
+ 
+}
+.search-inp{
+  border-radius: 25px;
+  font-size: 1rem;
+  width: 50vh;
+  padding: 0.5rem 3rem;
+}
+.search-btn i{
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  display: inline;
+}
+
+</style>
+
+
+
+
+
+
+<nav class="navbar navbar-expand-md bg-body-light sticky-top border-bottom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listings"><i class="fa-solid fa-earth-asia"></i> <b> Globetrotter </b></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="/listings">Explore</a>
+         <!-- <a class="nav-link" href="/listings">All Listings</a>-->
+        </div>
+
+        <div class="navbar-nav ms-auto">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 search-inp" type="search" placeholder="Search Destinations" >
+            <button class="btn btn-outline-success search-btn" type="submit">Search
+              <i class="fa-solid fa-earth-asia"></i>
+            </button>
+          </form>
+        </div>
+        
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listings/new">List Your Property</a> 
+          <% if (!currUser) { %>
+            <a class="nav-link active" href="/signup"><b>Sign Up</b></a>
+            <a class="nav-link" href="/login"><b>Login</b></a>
+            
+            <% } %>
+            <% if(currUser){ %>
+              <a class="nav-link" href="/logout"><b>Logout</b></a>
+              <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
